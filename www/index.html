@@ -208,7 +208,7 @@
                 var now = new Date().getTime(),
                         _1_sec_from_now = new Date(now + 1 * 1000);
 
-                cordova.plugins.notification.local.add({
+                cordova.plugins.notification.local.schedule({
                     id: 1,
                     text: 'Test Message 1',
                     icon: 'http://www.optimizeordie.de/wp-content/plugins/social-media-widget/images/default/64/googleplus.png',
@@ -224,7 +224,7 @@
         scheduleMultiple = function () {
             try{
 
-            cordova.plugins.notification.local.add([{
+            cordova.plugins.notification.local.schedule([{
                 id: 1,
                 text: 'Multi Message 1'
             }, {
@@ -247,7 +247,7 @@
             var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';
 
             //cordova.plugins.notification.local.schedule({
-                cordova.plugins.notification.local.add({
+                cordova.plugins.notification.local.schedule({
                 id: 1,
                 title: 'Scheduled with delay',
                 text: 'Test Message 1',
@@ -266,7 +266,7 @@
 
             var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';
             //cordova.plugins.notification.local.schedule({
-                cordova.plugins.notification.local.add({
+                cordova.plugins.notification.local.schedule({
                 id: 1,
                 text: 'Scheduled every minute',
                 every: 'minute',
