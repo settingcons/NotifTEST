@@ -203,7 +203,8 @@
         schedule = function () {
             try {
                 //cordova.plugins.notification.local.schedule
-                window.plugin.notification.local.add({
+                //window.plugin.notification.local.add
+                cordova.plugins.notification.local.schedule({
                     id: 1,
                     text: 'Test Message 1',
                     icon: 'http://www.optimizeordie.de/wp-content/plugins/social-media-widget/images/default/64/googleplus.png',
