@@ -31,14 +31,6 @@
     </head>
     <body>
     <div>
-        <div class="app">
-            <h1>Local-Notification Example</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-
         <!-- permission -->
         <h2 class="section" style="padding-top:180px;">Permission (iOS8)</h2>
         <div class="container">
@@ -137,22 +129,33 @@
         var id = 1, dialog;
 
         callback = function () {
-            cordova.plugins.notification.local.getIds(function (ids) {
-                showToast('IDs: ' + ids.join(' ,'));
-            });
+            try{
+                cordova.plugins.notification.local.getIds(function (ids) {
+                    showToast('IDs: ' + ids.join(' ,'));
+                });
+            }
+            catch(ex){alert('callback: '+ex.message);}
         };
 
         showToast = function (text) {
             setTimeout(function () {
+                try{
+
                 if (device.platform != 'windows') {
                     window.plugins.toast.showShortBottom(text);
                 } else {
                     showDialog(text);
                 }
+
+                }
+                catch(ex){alert('setTimeout: '+ex.message);}
             }, 100);
+
         };
 
         showDialog = function (text) {
+            try{
+
             if (dialog) {
                 dialog.content = text;
                 return;
@@ -163,6 +166,9 @@
             dialog.showAsync().done(function () {
                 dialog = null;
             });
+
+            }
+            catch(ex){alert('showDialog: '+ex.message);}
         };
 
     </script>
@@ -170,21 +176,32 @@
     <!-- permission -->
     <script type="text/javascript">
         hasPermission = function () {
+            try{
+
             cordova.plugins.notification.local.hasPermission(function (granted) {
                 showToast(granted ? 'Yes' : 'No');
             });
+
+            }
+            catch(ex){alert('hasPermission: '+ex.message);}
         };
 
         registerPermission = function () {
+            try{
+
             cordova.plugins.notification.local.registerPermission(function (granted) {
                 showToast(granted ? 'Yes' : 'No');
             });
+
+            }
+            catch(ex){alert('registerPermission: '+ex.message);}
         };
     </script>
 
     <!-- schedule -->
     <script type="text/javascript">
         schedule = function () {
+            try{
             cordova.plugins.notification.local.schedule({
                 id: 1,
                 text: 'Test Message 1',
@@ -192,9 +209,14 @@
                 sound: null,
                 data: { test: id }
             });
+
+            }
+            catch(ex){alert('schedule: '+ex.message);}
         };
 
         scheduleMultiple = function () {
+            try{
+
             cordova.plugins.notification.local.schedule([{
                 id: 1,
                 text: 'Multi Message 1'
@@ -205,9 +227,13 @@
                 id: 3,
                 text: 'Multi Message 3'
             }]);
+
+            }
+            catch(ex){alert('scheduleMultiple: '+ex.message);}
         };
 
         scheduleDelayed = function () {
+            try{
             var now = new Date().getTime(),
                     _5_sec_from_now = new Date(now + 5 * 1000);
 
@@ -221,9 +247,14 @@
                 sound: sound,
                 badge: 12
             });
+
+            }
+            catch(ex){alert('scheduleDelayed: '+ex.message);}
         };
 
         scheduleMinutely = function () {
+            try{
+
             var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';
 
             cordova.plugins.notification.local.schedule({
@@ -232,6 +263,9 @@
                 every: 'minute',
                 sound: sound
             });
+
+            }
+            catch(ex){alert('scheduleMinutely: '+ex.message);}
         };
     </script>
 
