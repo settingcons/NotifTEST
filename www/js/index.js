@@ -43,18 +43,63 @@ var app = {
 
 function deviceReady() {
 
-    // Android customization
-    cordova.plugins.backgroundMode.setDefaults({ text:'Doing heavy tasks.'});
-    // Enable background mode
-    cordova.plugins.backgroundMode.enable();
+    document.addEventListener("backbutton", handleBackButton, false);
 
-    // Called when background mode has been activated
-    cordova.plugins.backgroundMode.onactivate = function () {
-        setTimeout(function () {
-            // Modify the currently displayed notification
-            cordova.plugins.backgroundMode.configure({
-                text:'Running in background for more than 5s now.'
-            });
-        }, 5000);
+    try {
+        alert('deviceReady1');
+        // Android customization
+        cordova.plugins.backgroundMode.setDefaults({text: 'Doing heavy tasks.'});
+        alert('deviceReady2');
+        // Enable background mode
+        cordova.plugins.backgroundMode.enable();
+
+        alert('deviceReady3');
+        // Called when background mode has been activated
+        cordova.plugins.backgroundMode.onactivate = function () {
+            setTimeout(function () {
+                alert('funciona1???');
+                // Modify the currently displayed notification
+                cordova.plugins.backgroundMode.configure({
+                    text: 'Running in background for more than 5s now.'
+                });
+                alert('funciona2???');
+            }, 5000);
+        }
+        alert('deviceReady4');
+
+    }
+    catch (ex){alert("deviceReady: " +ex.message);}
+}
+function esIOS() {
+    return(navigator.userAgent.match(/(iPhone|iPod|iPad)/));
+}
+
+function handleBackButton() {
+    try {
+        //if ($.mobile.activePage.attr('id') == 'pageIndex') {
+        //    salir();
+        //}
+        //else if ($.mobile.activePage.attr('id') == 'pageInicio') {
+        //    salir();
+        //}
+        //else{
+            if(esIOS())
+            {
+                window.history.back();
+            }
+            else {
+                if (navigator.app) {
+                    navigator.app.backHistory();
+                } else if (navigator.device) {
+                    navigator.device.backHistory();
+                }
+                else {
+                    window.history.back();
+                }
+            }
+        //}
+    }
+    catch (ex) {
+        alert("handleBackButton: " +ex.message);
     }
 }
