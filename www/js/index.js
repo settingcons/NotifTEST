@@ -56,6 +56,7 @@ function deviceReady() {
         alert('deviceReady3');
         // Called when background mode has been activated
         cordova.plugins.backgroundMode.onactivate = function () {
+            alert('antes');
             setTimeout(function () {
                 alert('funciona1???');
                 // Modify the currently displayed notification
@@ -63,10 +64,11 @@ function deviceReady() {
                     text: 'Running in background for more than 5s now.'
                 });
                 alert('funciona2???');
-            }, 5000);
-        }
+            }, 500);
+            alert('después');
+        };
         alert('deviceReady4');
-
+        cordova.plugins.backgroundMode.onfailure = function(errorCode) {alert(errorCode.text)};
     }
     catch (ex){alert("deviceReady: " +ex.message);}
 }
@@ -74,8 +76,22 @@ function esIOS() {
     return(navigator.userAgent.match(/(iPhone|iPod|iPad)/));
 }
 
+function salir() {
+    if (esIOS()) {
+
+    }
+    else {
+        if (navigator.app) {
+            navigator.app.exitApp();
+        } else if (navigator.device) {
+            navigator.device.exitApp();
+        }
+    }
+}
+
 function handleBackButton() {
     try {
+        salir();
         //if ($.mobile.activePage.attr('id') == 'pageIndex') {
         //    salir();
         //}
@@ -83,20 +99,20 @@ function handleBackButton() {
         //    salir();
         //}
         //else{
-            if(esIOS())
-            {
-                window.history.back();
-            }
-            else {
-                if (navigator.app) {
-                    navigator.app.backHistory();
-                } else if (navigator.device) {
-                    navigator.device.backHistory();
-                }
-                else {
-                    window.history.back();
-                }
-            }
+        //    if(esIOS())
+        //    {
+        //        window.history.back();
+        //    }
+        //    else {
+        //        if (navigator.app) {
+        //            navigator.app.backHistory();
+        //        } else if (navigator.device) {
+        //            navigator.device.backHistory();
+        //        }
+        //        else {
+        //            window.history.back();
+        //        }
+        //    }
         //}
     }
     catch (ex) {
