@@ -44,7 +44,8 @@
     <gap:plugin name="org.apache.cordova.vibration" />
 
     <gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.6.4" />
-    <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1"  />
+    <!--<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1"  />-->
+    <gap:plugin name="com.footprint.cordova.plugin.local-notification" version="0.8.0" />
     <gap:plugin name="de.appplant.cordova.common.registerusernotificationsettings" />
     <gap:plugin name="nl.x-services.plugins.toast" />
 
