@@ -60,43 +60,43 @@ function deviceReady() {
             info = JSON.parse(localStorage.getItem("rp_data"));
         }, false);
 
-        
-        cordova.plugins.notification.local.on('schedule', function (notification) {
+
+        window.plugin.notification.local.on('schedule', function (notification) {
             //console.log('onschedule', arguments);
             showToast('scheduled: ' + notification.id);
         });
 
-        cordova.plugins.notification.local.on('update', function (notification) {
+        window.plugin.notification.local.on('update', function (notification) {
             //console.log('onupdate', arguments);
             showToast('updated: ' + notification.id);
         });
 
-        cordova.plugins.notification.local.on('trigger', function (notification) {
+        window.plugin.notification.local.on('trigger', function (notification) {
             //console.log('ontrigger', arguments);
             showToast('triggered: ' + notification.id);
         });
 
-        cordova.plugins.notification.local.on('click', function (notification) {
+        window.plugin.notification.local.on('click', function (notification) {
             //console.log('onclick', arguments);
             showToast('clicked: ' + notification.id);
         });
 
-        cordova.plugins.notification.local.on('cancel', function (notification) {
+        window.plugin.notification.local.on('cancel', function (notification) {
             //console.log('oncancel', arguments);
             showToast('canceled: ' + notification.id);
         });
 
-        cordova.plugins.notification.local.on('clear', function (notification) {
+        window.plugin.notification.local.on('clear', function (notification) {
             //console.log('onclear', arguments);
             showToast('cleared: ' + notification.id);
         });
 
-        cordova.plugins.notification.local.on('cancelall', function () {
+        window.plugin.notification.local.on('cancelall', function () {
             //console.log('oncancelall', arguments);
             showToast('canceled all');
         });
 
-        cordova.plugins.notification.local.on('clearall', function () {
+        window.plugin.notification.local.on('clearall', function () {
             //console.log('onclearall', arguments);
             showToast('cleared all');
         });

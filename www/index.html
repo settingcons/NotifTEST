@@ -190,7 +190,7 @@
         hasPermission = function () {
             try{
 
-            cordova.plugins.notification.local.hasPermission(function (granted) {
+                window.plugin.notification.local.hasPermission(function (granted) {
                 showToast(granted ? 'Yes' : 'No');
             });
 
@@ -201,7 +201,7 @@
         registerPermission = function () {
             try{
 
-            cordova.plugins.notification.local.registerPermission(function (granted) {
+                window.plugin.notification.local.registerPermission(function (granted) {
                 showToast(granted ? 'Yes' : 'No');
             });
 
@@ -251,7 +251,7 @@
         scheduleMultiple = function () {
             try{
 
-            cordova.plugins.notification.local.schedule([{
+                window.plugin.notification.local.add([{
                 id: 1,
                 text: 'Multi Message 1'
             }, {
@@ -275,7 +275,7 @@
 
                 showToast('scheduleDelayed1');
             //cordova.plugins.notification.local.schedule({
-                cordova.plugins.notification.local.schedule({
+                window.plugin.notification.local.add({
                 id: 1,
                 title: 'Scheduled with delay',
                 text: 'Test Message 1',
@@ -295,7 +295,7 @@
 
             var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';
             //cordova.plugins.notification.local.schedule({
-                cordova.plugins.notification.local.schedule({
+                window.plugin.notification.local.add({
                 id: 1,
                 text: 'Scheduled every minute',
                 every: 'minute',
@@ -310,7 +310,7 @@
     <!-- update -->
     <script type="text/javascript">
         update = function () {
-            cordova.plugins.notification.local.update({
+            window.plugin.notification.local.update({
                 id: 1,
                 text: 'Updated Message 1',
                 json: { updated: true }
@@ -318,7 +318,7 @@
         };
 
         updateInterval = function () {
-            cordova.plugins.notification.local.update({
+            window.plugin.notification.local.update({
                 id: 1,
                 text: 'Updated Message 1',
                 every: 'minute'
@@ -329,30 +329,30 @@
     <!-- clear -->
     <script type="text/javascript">
         clearSingle = function () {
-            cordova.plugins.notification.local.clear(1, callback);
+            window.plugin.notification.local.clear(1, callback);
         };
 
         clearMultiple = function () {
-            cordova.plugins.notification.local.clear([2, 3], callback);
+            window.plugin.notification.local.clear([2, 3], callback);
         };
 
         clearAll = function () {
-            cordova.plugins.notification.local.clearAll(callback);
+            window.plugin.notification.local.clearAll(callback);
         };
     </script>
 
     <!-- cancel -->
     <script type="text/javascript">
         cancel = function () {
-            cordova.plugins.notification.local.cancel(1, callback);
+            window.plugin.notification.local.cancel(1, callback);
         };
 
         cancelMultiple = function () {
-            cordova.plugins.notification.local.cancel([2, 3], callback);
+            window.plugin.notification.local.cancel([2, 3], callback);
         };
 
         cancelAll = function () {
-            cordova.plugins.notification.local.cancelAll(callback);
+            window.plugin.notification.local.cancelAll(callback);
         };
     </script>
 
@@ -360,7 +360,7 @@
     <script type="text/javascript">
         isPresent = function () {
             try {
-                cordova.plugins.notification.local.isPresent(id, function (present) {
+                window.plugin.notification.local.isPresent(id, function (present) {
                     showToast(present ? 'Yes' : 'No');
                 });
             }
@@ -369,7 +369,7 @@
 
         isScheduled = function () {
             try {
-                cordova.plugins.notification.local.isScheduled(id, function (scheduled) {
+                window.plugin.notification.local.isScheduled(id, function (scheduled) {
                     showToast(scheduled ? 'Yes' : 'No');
                 });
             }
@@ -378,7 +378,7 @@
 
         isTriggered = function () {
             try {
-                cordova.plugins.notification.local.isTriggered(id, function (triggered) {
+                window.plugin.notification.local.isTriggered(id, function (triggered) {
                     showToast(triggered ? 'Yes' : 'No');
                 });
             }
@@ -394,15 +394,15 @@
         };
 
         getIds = function () {
-            cordova.plugins.notification.local.getIds(callbackIds);
+            window.plugin.notification.local.getIds(callbackIds);
         };
 
         getScheduledIds = function () {
-            cordova.plugins.notification.local.getScheduledIds(callbackIds);
+            window.plugin.notification.local.getScheduledIds(callbackIds);
         };
 
         getTriggeredIds = function () {
-            cordova.plugins.notification.local.getTriggeredIds(callbackIds);
+            window.plugin.notification.local.getTriggeredIds(callbackIds);
         };
     </script>
 
@@ -419,30 +419,30 @@
         };
 
         get = function () {
-            cordova.plugins.notification.local.get(1, callbackSingleOpts);
+            window.plugin.notification.local.get(1, callbackSingleOpts);
         };
 
         getMultiple = function () {
-            cordova.plugins.notification.local.get([1, 2], callbackOpts);
+            window.plugin.notification.local.get([1, 2], callbackOpts);
         };
 
         getAll = function () {
-            cordova.plugins.notification.local.getAll(callbackOpts);
+            window.plugin.notification.local.getAll(callbackOpts);
         };
 
         getScheduled = function () {
-            cordova.plugins.notification.local.getScheduled(callbackOpts);
+            window.plugin.notification.local.getScheduled(callbackOpts);
         };
 
         getTriggered = function () {
-            cordova.plugins.notification.local.getTriggered(callbackOpts);
+            window.plugin.notification.local.getTriggered(callbackOpts);
         };
     </script>
 
     <!-- defaults -->
     <script type="text/javascript">
         setDefaultTitle = function () {
-            cordova.plugins.notification.local.setDefaults({
+            window.plugin.notification.local.setDefaults({
                 title: 'New Default Title'
             });
         };
