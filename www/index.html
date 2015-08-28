@@ -26,7 +26,20 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <link href="css/themes/base.css" rel="stylesheet" />
+        <link href="css/themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+        <link href="css/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/jquery.mobile.datebox-1.0.2.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <!-- jQuery -->
+        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="js/jquery.json-2.2.min.js" type="text/javascript"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+        <script src="js/jquery.mobile.datebox-1.0.2.min.js" type="text/javascript"></script>
+        <script src="js/jquery.ba-dotimeout.min.js" type="text/javascript"></script>
+
         <title>Hello World</title>
     </head>
     <body>
@@ -124,7 +137,7 @@
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="background-mode.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="negocio/index.js"></script>
 
     <script type="text/javascript">
         var id = 1, dialog;
@@ -207,8 +220,8 @@
                 //window.plugin.notification.local.add
 
                 alert('schedule 1');
-                var now = new Date().getTime(),
-                        _1_sec_from_now = new Date(now + 1 * 1000);
+                var now = new Date().getTime();
+                var _1_sec_from_now = new Date(now + 1 * 1000);
 
                 cordova.plugins.notification.local.schedule({
                     id: 1,
