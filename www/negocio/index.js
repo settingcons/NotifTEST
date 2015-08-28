@@ -47,6 +47,20 @@ function deviceReady() {
 
 
     try {
+
+        var info = null;
+
+        document.addEventListener("deviceready", function(){
+            if(!localStorage.getItem("rp_data"))
+            {
+                var rp_data = {data: []};
+                localStorage.setItem("rp_data", JSON.stringify(rp_data));
+            }
+
+            info = JSON.parse(localStorage.getItem("rp_data"));
+        }, false);
+
+        
         cordova.plugins.notification.local.on('schedule', function (notification) {
             //console.log('onschedule', arguments);
             showToast('scheduled: ' + notification.id);

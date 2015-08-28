@@ -55,6 +55,7 @@
         <h2 class="section">Schedule</h2>
         <div class="container">
             <div onclick="schedule()">Single<br /><span>schedule(1)</span></div>
+            <div onclick="schedule1()">Single<br /><span>schedule1(1)</span></div>
             <div onclick="scheduleMultiple()">Multiple<br /><span>schedule(1, 2, 3)</span></div>
         </div>
         <div class="container">
@@ -218,6 +219,24 @@
                 var _1_sec_from_now = new Date(now + 1 * 1000);
 
                 cordova.plugins.notification.local.schedule({
+                    id: 1,
+                    title: 'Titulo',
+                    text: 'Test Message 1',
+                    at: _1_sec_from_now
+                });
+                //alert('schedule 2');
+
+            }
+            catch(ex){alert('schedule: '+ex.message);}
+        };
+
+        schedule1 = function () {
+            try {
+                showToast('schedule 1');
+                var now = new Date().getTime();
+                var _1_sec_from_now = new Date(now + 1 * 1000);
+
+                window.plugin.notification.local.add({
                     id: 1,
                     title: 'Titulo',
                     text: 'Test Message 1',
@@ -477,6 +496,7 @@
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="background-mode.js"></script>
+    <script type="text/javascript" src="local-notification.js"></script>
     <script type="text/javascript" src="negocio/index.js"></script>
 
     <script type="text/javascript">
