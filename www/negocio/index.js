@@ -45,6 +45,51 @@ function deviceReady() {
 
     document.addEventListener("backbutton", handleBackButton, false);
 
+
+    try {
+        cordova.plugins.notification.local.on('schedule', function (notification) {
+            //console.log('onschedule', arguments);
+            showToast('scheduled: ' + notification.id);
+        });
+
+        cordova.plugins.notification.local.on('update', function (notification) {
+            //console.log('onupdate', arguments);
+            showToast('updated: ' + notification.id);
+        });
+
+        cordova.plugins.notification.local.on('trigger', function (notification) {
+            //console.log('ontrigger', arguments);
+            showToast('triggered: ' + notification.id);
+        });
+
+        cordova.plugins.notification.local.on('click', function (notification) {
+            //console.log('onclick', arguments);
+            showToast('clicked: ' + notification.id);
+        });
+
+        cordova.plugins.notification.local.on('cancel', function (notification) {
+            //console.log('oncancel', arguments);
+            showToast('canceled: ' + notification.id);
+        });
+
+        cordova.plugins.notification.local.on('clear', function (notification) {
+            //console.log('onclear', arguments);
+            showToast('cleared: ' + notification.id);
+        });
+
+        cordova.plugins.notification.local.on('cancelall', function () {
+            //console.log('oncancelall', arguments);
+            showToast('canceled all');
+        });
+
+        cordova.plugins.notification.local.on('clearall', function () {
+            //console.log('onclearall', arguments);
+            showToast('cleared all');
+        });
+
+    }
+    catch (ex){alert("deviceReady1: " +ex.message);}
+
     try {
         alert('deviceReady1');
         // Android customization
@@ -70,7 +115,7 @@ function deviceReady() {
         alert('deviceReady4');
         cordova.plugins.backgroundMode.onfailure = function(errorCode) {alert(errorCode.text)};
     }
-    catch (ex){alert("deviceReady: " +ex.message);}
+    catch (ex){alert("deviceReady2: " +ex.message);}
 }
 function esIOS() {
     return(navigator.userAgent.match(/(iPhone|iPod|iPad)/));

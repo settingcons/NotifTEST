@@ -135,9 +135,6 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="background-mode.js"></script>
-    <script type="text/javascript" src="negocio/index.js"></script>
 
     <script type="text/javascript">
         var id = 1, dialog;
@@ -216,22 +213,17 @@
     <script type="text/javascript">
         schedule = function () {
             try {
-                //cordova.plugins.notification.local.schedule
-                //window.plugin.notification.local.add
-
-                alert('schedule 1');
+                showToast('schedule 1');
                 var now = new Date().getTime();
                 var _1_sec_from_now = new Date(now + 1 * 1000);
 
                 cordova.plugins.notification.local.schedule({
                     id: 1,
+                    title: 'Titulo',
                     text: 'Test Message 1',
-                    //icon: 'http://www.optimizeordie.de/wp-content/plugins/social-media-widget/images/default/64/googleplus.png',
-                    sound: null,
                     at: _1_sec_from_now
-                    //data: {test: id}
                 });
-                alert('schedule 2');
+                //alert('schedule 2');
 
             }
             catch(ex){alert('schedule: '+ex.message);}
@@ -262,7 +254,7 @@
 
             var sound = device.platform == 'Android' ? 'file://sound.mp3' : 'file://beep.caf';
 
-                alert('scheduleDelayed1');
+                showToast('scheduleDelayed1');
             //cordova.plugins.notification.local.schedule({
                 cordova.plugins.notification.local.schedule({
                 id: 1,
@@ -272,7 +264,7 @@
                 sound: sound,
                 badge: 12
             });
-                alert('scheduleDelayed2');
+                showToast('scheduleDelayed2');
 
             }
             catch(ex){alert('scheduleDelayed: '+ex.message);}
@@ -439,50 +431,55 @@
 
     <!-- callbacks -->
     <script type="text/javascript">
-        document.addEventListener('deviceready', function () {
-
-            cordova.plugins.notification.local.on('schedule', function (notification) {
-                //console.log('onschedule', arguments);
-                 showToast('scheduled: ' + notification.id);
-            });
-
-            cordova.plugins.notification.local.on('update', function (notification) {
-                //console.log('onupdate', arguments);
-                 showToast('updated: ' + notification.id);
-            });
-
-            cordova.plugins.notification.local.on('trigger', function (notification) {
-                //console.log('ontrigger', arguments);
-                showToast('triggered: ' + notification.id);
-            });
-
-            cordova.plugins.notification.local.on('click', function (notification) {
-                //console.log('onclick', arguments);
-                showToast('clicked: ' + notification.id);
-            });
-
-            cordova.plugins.notification.local.on('cancel', function (notification) {
-                //console.log('oncancel', arguments);
-                 showToast('canceled: ' + notification.id);
-            });
-
-            cordova.plugins.notification.local.on('clear', function (notification) {
-                //console.log('onclear', arguments);
-                showToast('cleared: ' + notification.id);
-            });
-
-            cordova.plugins.notification.local.on('cancelall', function () {
-                //console.log('oncancelall', arguments);
-                 showToast('canceled all');
-            });
-
-            cordova.plugins.notification.local.on('clearall', function () {
-                //console.log('onclearall', arguments);
-                 showToast('cleared all');
-            });
-        }, false);
+//        document.addEventListener('deviceready', function () {
+//
+//            cordova.plugins.notification.local.on('schedule', function (notification) {
+//                //console.log('onschedule', arguments);
+//                 showToast('scheduled: ' + notification.id);
+//            });
+//
+//            cordova.plugins.notification.local.on('update', function (notification) {
+//                //console.log('onupdate', arguments);
+//                 showToast('updated: ' + notification.id);
+//            });
+//
+//            cordova.plugins.notification.local.on('trigger', function (notification) {
+//                //console.log('ontrigger', arguments);
+//                showToast('triggered: ' + notification.id);
+//            });
+//
+//            cordova.plugins.notification.local.on('click', function (notification) {
+//                //console.log('onclick', arguments);
+//                showToast('clicked: ' + notification.id);
+//            });
+//
+//            cordova.plugins.notification.local.on('cancel', function (notification) {
+//                //console.log('oncancel', arguments);
+//                 showToast('canceled: ' + notification.id);
+//            });
+//
+//            cordova.plugins.notification.local.on('clear', function (notification) {
+//                //console.log('onclear', arguments);
+//                showToast('cleared: ' + notification.id);
+//            });
+//
+//            cordova.plugins.notification.local.on('cancelall', function () {
+//                //console.log('oncancelall', arguments);
+//                 showToast('canceled all');
+//            });
+//
+//            cordova.plugins.notification.local.on('clearall', function () {
+//                //console.log('onclearall', arguments);
+//                 showToast('cleared all');
+//            });
+//        }, false);
     </script>
-        <script type="text/javascript">
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="background-mode.js"></script>
+    <script type="text/javascript" src="negocio/index.js"></script>
+
+    <script type="text/javascript">
             app.initialize();
         </script>
     </body>
