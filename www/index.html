@@ -56,6 +56,32 @@
                 </tr>
             </table>
         </div>
+
+        <!-- callbacks -->
+        <script type="text/javascript">
+                    document.addEventListener('deviceready', function () {
+                        window.plugin.notification.local.onadd = function (id, state, json) {
+                            mensaje(id,'EVENTO onadd');
+                        };
+
+                        window.plugin.notification.local.ontrigger = function (id, state, json) {
+                            mensaje(id,'EVENTO ontrigger');
+                        };
+
+                        window.plugin.notification.local.oncancel = function (id, state, json) {
+                            mensaje(id,'EVENTO oncancel');
+                        };
+
+                        window.plugin.notification.local.onclick = function (id, state, json) {
+                            try
+                            {
+                                mensaje(id+"\n"+ JSON.parse(json).test,'EVENTO onclick');
+                            }
+                            catch (ex){mensaje(id,'EVENTO onclick');}
+                        }
+                    }, false);
+        </script>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">

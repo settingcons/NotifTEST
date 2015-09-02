@@ -43,25 +43,6 @@ var app = {
 
 function deviceReady() {
     try{
-        window.plugin.notification.local.onadd = function (id, state, json) {
-            mensaje(id,'EVENTO onadd');
-        };
-
-        window.plugin.notification.local.ontrigger = function (id, state, json) {
-            mensaje(id,'EVENTO ontrigger');
-        };
-
-        window.plugin.notification.local.oncancel = function (id, state, json) {
-            mensaje(id,'EVENTO oncancel');
-        };
-
-        window.plugin.notification.local.onclick = function (id, state, json) {
-            try
-            {
-                mensaje(id+"\n"+ JSON.parse(json).test,'EVENTO onclick');
-            }
-            catch (ex){mensaje(id,'EVENTO onclick');}
-        }
     }
     catch (ex){mensaje(ex.message,'ERROR en deviceReady');}
 }
