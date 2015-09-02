@@ -94,6 +94,23 @@ function metodo_add(p_id) {
     catch (ex){mensaje(ex.message,'ERROR en metodo_add');}
 }
 
+function metodo_add_autoCancel(p_id) {
+    try{
+        var now = new Date().getTime();
+        _10_seconds_from_now = new Date(now + 10*1000);
+
+        window.plugin.notification.local.add({
+            id:      p_id,
+            title:   'Notificación 3',
+            message: 'Vas a funcionar?.',
+            repeat:  5,
+            autoCancel: true,
+            date:    _10_seconds_from_now
+        });
+    }
+    catch (ex){mensaje(ex.message,'ERROR en metodo_add_autoCancel');}
+}
+
 function metodo_add_simple(p_id) {
     try{
         var now = new Date().getTime();

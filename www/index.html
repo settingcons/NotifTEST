@@ -32,19 +32,27 @@
     </head>
     <body>
         <div style="align-content: center" >
-            <table cellspacing="5" cellpadding="5" border="0" width="95%">
+            <table cellspacing="3" cellpadding="3" border="0" width="99%">
+                <tr><td colspan="2" style="font-family: 'segoe ui'  ;font-size: 14px ">sin sonido, sin icono, q se repita cada 5 minuto</td></tr>
                 <tr>
-                    <td> <button onclick="metodo_add(1);">Notificación 1</button></td>
-                    <td> <button onclick="metodo_cancel(1);">Cancelar 1</button></td>
-                    <td style="font-family: 'segoe ui'  ;font-size: 10px ">sin sonido, sin icono, q se repita cada minuto</td>
+                    <td> <button style="height: 30px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_add(1);">Notificación 1</button></td>
+                    <td> <button style="height: 30px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_cancel(1);">Cancelar 1</button></td>
+
+                </tr>
+                <tr><td colspan="2" style="font-family: 'segoe ui'  ;font-size: 14px">sin sonido, sin icono,sin repetición </td></tr>
+                <tr>
+                    <td> <button style="height: 30px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_add_simple(2);">Notificación 2</button></td>
+                    <td> <button style="height: 30px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_cancel(2);">Cancelar 2</button></td>
+
+                </tr>
+                <tr><td colspan="2" style="font-family: 'segoe ui'  ;font-size: 14px ">sin sonido, sin icono, q se repita cada 5 minuto, con autocancel</td></tr>
+                <tr>
+                    <td> <button style="height: 30px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_add_autoCancel(3);">Notificación 3</button></td>
+                    <td> <button style="height: 30px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_cancel(3);">Cancelar 3</button></td>
+
                 </tr>
                 <tr>
-                    <td> <button onclick="metodo_add_simple(2);">Notificación 2</button></td>
-                    <td> <button onclick="metodo_cancel(2);">Cancelar 2</button></td>
-                    <td style="font-family: 'segoe ui'  ;font-size: 10px ">sin sonido, sin icono,sin repetición </td>
-                </tr>
-                <tr>
-                    <td colspan="3"> <button onclick="metodo_cancelAll();">Cancelar Todas</button></td>
+                    <td colspan="2"> <button style="height: 30px;width: 200px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_cancelAll();">Cancelar Todas</button></td>
                 </tr>
             </table>
         </div>
