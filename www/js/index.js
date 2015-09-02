@@ -56,7 +56,11 @@ function deviceReady() {
         };
 
         window.plugin.notification.local.onclick = function (id, state, json) {
-            mensaje(id+"\n"+ JSON.parse(json).test,'EVENTO onclick');
+            try
+            {
+                mensaje(id+"\n"+ JSON.parse(json).test,'EVENTO onclick');
+            }
+            catch (ex){mensaje(id,'EVENTO onclick');}
         }
     }
     catch (ex){mensaje(ex.message,'ERROR en deviceReady');}
@@ -83,9 +87,8 @@ function metodo_add(p_id) {
             id:      p_id,
             title:   'Notificación 1',
             message: 'Vas a funcionar?.',
-            repeat:  'minute',
-            date:    _10_seconds_from_now,
-            json:       JSON.stringify({ test: 111 })
+            repeat:  5,
+            date:    _10_seconds_from_now
         });
     }
     catch (ex){mensaje(ex.message,'ERROR en metodo_add');}
