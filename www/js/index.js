@@ -42,26 +42,27 @@ var app = {
 };
 
 function deviceReady() {
-    try{
-        cordova.plugins.notification.local.on('schedule',function (notificacion) {
-            mensaje(notificacion.id,'EVENTO schedule');
-        });
+    try {
+        window.plugin.notification.local.onadd = function (id, state, json) {
+            mensaje(id, 'EVENTO onadd');
+        };
 
-        cordova.plugins.notification.local.on('trigger',function (notificacion) {
-            mensaje(notificacion.id,'EVENTO trigger');
-        });
+        window.plugin.notification.local.ontrigger = function (id, state, json) {
+            mensaje(id, 'EVENTO ontrigger');
+        };
 
-        cordova.plugins.notification.local.on('cancel',  function (notificacion) {
-            mensaje(notificacion,'EVENTO cancel');
-        });
+        window.plugin.notification.local.oncancel = function (id, state, json) {
+            mensaje(id, 'EVENTO oncancel');
+        };
 
-        cordova.plugins.notification.local.on('click', function (notificacion) {
-            try
-            {
-                mensaje(notificacion.id+"\n"+ notificacion.data,'EVENTO onclick');
+        window.plugin.notification.local.onclick = function (id, state, json) {
+            try {
+                mensaje(id + "\n" + JSON.parse(json).test, 'EVENTO onclick');
             }
-            catch (ex){mensaje(notificacion.id,'EVENTO onclick');}
-        });
+            catch (ex) {
+                mensaje(id, 'EVENTO onclick');
+            }
+        }
     }
     catch (ex){mensaje(ex.message,'ERROR en deviceReady');}
 }
@@ -83,22 +84,22 @@ function metodo_add(p_id) {
         var now = new Date().getTime();
         _10_seconds_from_now = new Date(now + 10*1000);
 
-        //window.plugin.notification.local.add({
-        //    id:      p_id,
-        //    title:   'Notificación 1',
-        //    message: 'Vas a funcionar?.',
-        //    repeat:  5,
-        //    date:    _10_seconds_from_now
-        //});
-
-
-        cordova.plugins.notification.local.schedule({
+        window.plugin.notification.local.add({
             id:      p_id,
             title:   'Notificación 1',
-            text: 'Vas a funcionar?.',
-            every:  5,
-            at:    _10_seconds_from_now
+            message: 'Vas a funcionar?.',
+            repeat:  5,
+            date:    _10_seconds_from_now
         });
+
+
+        //cordova.plugins.notification.local.schedule({
+        //    id:      p_id,
+        //    title:   'Notificación 1',
+        //    text: 'Vas a funcionar?.',
+        //    every:  5,
+        //    at:    _10_seconds_from_now
+        //});
 
     }
     catch (ex){mensaje(ex.message,'ERROR en metodo_add');}
@@ -109,23 +110,23 @@ function metodo_add_autoCancel(p_id) {
         var now = new Date().getTime();
         var _10_seconds_from_now = new Date(now + 10*1000);
 
-        //window.plugin.notification.local.add({
-        //    id:      p_id,
-        //    title:   'Notificación 3',
-        //    message: 'Vas a funcionar?.',
-        //    repeat:  5,
-        //    autoCancel: true,
-        //    date:    _10_seconds_from_now
-        //});
-
-        cordova.plugins.notification.local.schedule({
+        window.plugin.notification.local.add({
             id:      p_id,
             title:   'Notificación 3',
-            text: 'Vas a funcionar?.',
-            every:  5,
+            message: 'Vas a funcionar?.',
+            repeat:  5,
             autoCancel: true,
-            at:    _10_seconds_from_now
+            date:    _10_seconds_from_now
         });
+
+        //cordova.plugins.notification.local.schedule({
+        //    id:      p_id,
+        //    title:   'Notificación 3',
+        //    text: 'Vas a funcionar?.',
+        //    every:  5,
+        //    autoCancel: true,
+        //    at:    _10_seconds_from_now
+        //});
 
     }
     catch (ex){mensaje(ex.message,'ERROR en metodo_add_autoCancel');}
@@ -136,20 +137,20 @@ function metodo_add_simple(p_id) {
         var now = new Date().getTime();
         var _10_seconds_from_now = new Date(now + 10*1000);
 
-        //window.plugin.notification.local.add({
-        //    id:      p_id,
-        //    title:   'Notificación 2',
-        //    message: 'Vas a funcionar?.',
-        //    date:    _10_seconds_from_now,
-        //    json:       JSON.stringify({ test: 222 })
-        //});
-
-        cordova.plugins.notification.local.schedule({
+        window.plugin.notification.local.add({
             id:      p_id,
             title:   'Notificación 2',
-            text: 'Vas a funcionar?.',
-            at:    _10_seconds_from_now
+            message: 'Vas a funcionar?.',
+            date:    _10_seconds_from_now,
+            json:       JSON.stringify({ test: 222 })
         });
+
+        //cordova.plugins.notification.local.schedule({
+        //    id:      p_id,
+        //    title:   'Notificación 2',
+        //    text: 'Vas a funcionar?.',
+        //    at:    _10_seconds_from_now
+        //});
 
     }
     catch (ex){mensaje(ex.message,'ERROR en metodo_add_simple');}
@@ -159,17 +160,13 @@ function metodo_add_rapida(p_id) {
         var now = new Date().getTime();
         var _10_seconds_from_now = new Date(now + 10*1000);
 
-        //window.plugin.notification.local.add({
-        //    id:      p_id,
-        //    title:   'Notificación 2',
-        //    message: 'Vas a funcionar?.',
-        //    date:    _10_seconds_from_now,
-        //    json:       JSON.stringify({ test: 222 })
-        //});
-
-        cordova.plugins.notification.local.schedule({
-            text: 'Vas a funcionar?.'
+        window.plugin.notification.local.add({
+            message: 'Vas a funcionar?.'
         });
+
+        //cordova.plugins.notification.local.schedule({
+        //    text: 'Vas a funcionar?.'
+        //});
 
     }
     catch (ex){mensaje(ex.message,'ERROR en metodo_add_rapida');}
@@ -177,16 +174,16 @@ function metodo_add_rapida(p_id) {
 
 function metodo_cancel(p_id) {
     try{
-        //window.plugin.notification.local.cancel(p_id);
-        cordova.plugins.notification.local.cancel(p_id);
+        window.plugin.notification.local.cancel(p_id);
+        //cordova.plugins.notification.local.cancel(p_id);
     }
     catch (ex){mensaje(ex.message,'ERROR en metodo_cancel');}
 }
 
 function metodo_cancelAll() {
     try{
-        //window.plugin.notification.local.cancelAll();
-        cordova.plugins.notification.local.cancelAll();
+        window.plugin.notification.local.cancelAll();
+        //cordova.plugins.notification.local.cancelAll();
     }
     catch (ex){mensaje(ex.message,'ERROR en metodo_cancelAll');}
 }
