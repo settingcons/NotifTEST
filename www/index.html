@@ -60,25 +60,46 @@
         <!-- callbacks -->
         <script type="text/javascript">
                     document.addEventListener('deviceready', function () {
-                        window.plugin.notification.local.onadd = function (id, state, json) {
-                            mensaje(id,'EVENTO onadd');
-                        };
+//                        window.plugin.notification.local.onadd = function (id, state, json) {
+//                            mensaje(id,'EVENTO onadd');
+//                        };
+//
+//                        window.plugin.notification.local.ontrigger = function (id, state, json) {
+//                            mensaje(id,'EVENTO ontrigger');
+//                        };
+//
+//                        window.plugin.notification.local.oncancel = function (id, state, json) {
+//                            mensaje(id,'EVENTO oncancel');
+//                        };
+//
+//                        window.plugin.notification.local.onclick = function (id, state, json) {
+//                            try
+//                            {
+//                                mensaje(id+"\n"+ JSON.parse(json).test,'EVENTO onclick');
+//                            }
+//                            catch (ex){mensaje(id,'EVENTO onclick');}
+//                        }
 
-                        window.plugin.notification.local.ontrigger = function (id, state, json) {
-                            mensaje(id,'EVENTO ontrigger');
-                        };
+                        cordova.plugins.notification.local.on('schedule',function (notificacion) {
+                            mensaje(notificacion.id,'EVENTO schedule');
+                        });
 
-                        window.plugin.notification.local.oncancel = function (id, state, json) {
-                            mensaje(id,'EVENTO oncancel');
-                        };
+                        cordova.plugins.notification.local.on('trigger',function (notificacion) {
+                            mensaje(notificacion.id,'EVENTO trigger');
+                        });
 
-                        window.plugin.notification.local.onclick = function (id, state, json) {
+                        cordova.plugins.notification.local.on('cancel',  function (notificacion) {
+                            mensaje(notificacion,'EVENTO cancel');
+                        });
+
+                        cordova.plugins.notification.local.on('click', function (notificacion) {
                             try
                             {
-                                mensaje(id+"\n"+ JSON.parse(json).test,'EVENTO onclick');
+                                mensaje(notificacion.id+"\n"+ notificacion.data,'EVENTO onclick');
                             }
-                            catch (ex){mensaje(id,'EVENTO onclick');}
-                        }
+                            catch (ex){mensaje(notificacion.id,'EVENTO onclick');}
+                        });
+
                     }, false);
         </script>
 
