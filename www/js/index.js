@@ -95,8 +95,8 @@ function metodo_add(p_id) {
         cordova.plugins.notification.local.schedule({
             id:      p_id,
             title:   'Notificación 1',
-            message: 'Vas a funcionar?.',
-            repeat:  5,
+            text: 'Vas a funcionar?.',
+            every:  5,
             at:    _10_seconds_from_now
         });
 
@@ -121,8 +121,8 @@ function metodo_add_autoCancel(p_id) {
         cordova.plugins.notification.local.schedule({
             id:      p_id,
             title:   'Notificación 3',
-            message: 'Vas a funcionar?.',
-            repeat:  5,
+            text: 'Vas a funcionar?.',
+            every:  5,
             autoCancel: true,
             at:    _10_seconds_from_now
         });
@@ -147,7 +147,7 @@ function metodo_add_simple(p_id) {
         cordova.plugins.notification.local.schedule({
             id:      p_id,
             title:   'Notificación 2',
-            message: 'Vas a funcionar?.',
+            text: 'Vas a funcionar?.',
             at:    _10_seconds_from_now
         });
 
@@ -168,7 +168,7 @@ function metodo_add_rapida(p_id) {
         //});
 
         cordova.plugins.notification.local.schedule({
-            message: 'Vas a funcionar?.'
+            text: 'Vas a funcionar?.'
         });
 
     }
