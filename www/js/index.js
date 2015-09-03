@@ -78,7 +78,7 @@ function metodo_add(p_id) {
             title:   'Notificación 1',
             message: 'Vas a funcionar?.',
             repeat:  5,
-            date:    _10_seconds_from_now
+            at:    _10_seconds_from_now
         });
 
     }
@@ -105,7 +105,7 @@ function metodo_add_autoCancel(p_id) {
             message: 'Vas a funcionar?.',
             repeat:  5,
             autoCancel: true,
-            date:    _10_seconds_from_now
+            at:    _10_seconds_from_now
         });
 
     }
@@ -129,7 +129,7 @@ function metodo_add_simple(p_id) {
             id:      p_id,
             title:   'Notificación 2',
             message: 'Vas a funcionar?.',
-            date:    _10_seconds_from_now,
+            at:    _10_seconds_from_now,
             data:    { test: 222 }
         });
 
