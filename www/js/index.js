@@ -129,8 +129,7 @@ function metodo_add_simple(p_id) {
             id:      p_id,
             title:   'Notificación 2',
             message: 'Vas a funcionar?.',
-            at:    _10_seconds_from_now,
-            data:    { test: 222 }
+            at:    _10_seconds_from_now
         });
 
     }
