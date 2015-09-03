@@ -43,6 +43,25 @@ var app = {
 
 function deviceReady() {
     try{
+        cordova.plugins.notification.local.on('schedule',function (notificacion) {
+            mensaje(notificacion.id,'EVENTO schedule');
+        });
+
+        cordova.plugins.notification.local.on('trigger',function (notificacion) {
+            mensaje(notificacion.id,'EVENTO trigger');
+        });
+
+        cordova.plugins.notification.local.on('cancel',  function (notificacion) {
+            mensaje(notificacion,'EVENTO cancel');
+        });
+
+        cordova.plugins.notification.local.on('click', function (notificacion) {
+            try
+            {
+                mensaje(notificacion.id+"\n"+ notificacion.data,'EVENTO onclick');
+            }
+            catch (ex){mensaje(notificacion.id,'EVENTO onclick');}
+        });
     }
     catch (ex){mensaje(ex.message,'ERROR en deviceReady');}
 }
@@ -88,7 +107,7 @@ function metodo_add(p_id) {
 function metodo_add_autoCancel(p_id) {
     try{
         var now = new Date().getTime();
-        _10_seconds_from_now = new Date(now + 10*1000);
+        var _10_seconds_from_now = new Date(now + 10*1000);
 
         //window.plugin.notification.local.add({
         //    id:      p_id,
@@ -115,7 +134,7 @@ function metodo_add_autoCancel(p_id) {
 function metodo_add_simple(p_id) {
     try{
         var now = new Date().getTime();
-        _10_seconds_from_now = new Date(now + 10*1000);
+        var _10_seconds_from_now = new Date(now + 10*1000);
 
         //window.plugin.notification.local.add({
         //    id:      p_id,
@@ -134,6 +153,26 @@ function metodo_add_simple(p_id) {
 
     }
     catch (ex){mensaje(ex.message,'ERROR en metodo_add_simple');}
+}
+function metodo_add_rapida(p_id) {
+    try{
+        var now = new Date().getTime();
+        var _10_seconds_from_now = new Date(now + 10*1000);
+
+        //window.plugin.notification.local.add({
+        //    id:      p_id,
+        //    title:   'Notificación 2',
+        //    message: 'Vas a funcionar?.',
+        //    date:    _10_seconds_from_now,
+        //    json:       JSON.stringify({ test: 222 })
+        //});
+
+        cordova.plugins.notification.local.schedule({
+            message: 'Vas a funcionar?.'
+        });
+
+    }
+    catch (ex){mensaje(ex.message,'ERROR en metodo_add_rapida');}
 }
 
 function metodo_cancel(p_id) {

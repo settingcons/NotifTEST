@@ -45,6 +45,12 @@
                     <td> <button style="height: 60px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_cancel(2);">Cancelar 2</button></td>
 
                 </tr>
+                <tr><td colspan="2" style="font-family: 'segoe ui'  ;font-size: 14px">sin sonido, sin icono,rápida </td></tr>
+                <tr>
+                    <td> <button style="height: 60px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_add_rapida(4);">Notificación 4</button></td>
+                    <td> <button style="height: 60px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_cancel(4);">Cancelar 4</button></td>
+
+                </tr>
                 <tr><td colspan="2" style="font-family: 'segoe ui'  ;font-size: 14px ">sin sonido, sin icono, q se repita cada 5 minuto, con autocancel</td></tr>
                 <tr>
                     <td> <button style="height: 60px;width: 130px;font-family: 'segoe ui'  ;font-size: 14px" onclick="metodo_add_autoCancel(3);">Notificación 3</button></td>
@@ -59,7 +65,7 @@
 
         <!-- callbacks -->
         <script type="text/javascript">
-                    document.addEventListener('deviceready', function () {
+//                    document.addEventListener('deviceready', function () {
 //                        window.plugin.notification.local.onadd = function (id, state, json) {
 //                            mensaje(id,'EVENTO onadd');
 //                        };
@@ -80,27 +86,27 @@
 //                            catch (ex){mensaje(id,'EVENTO onclick');}
 //                        }
 
-                        cordova.plugins.notification.local.on('schedule',function (notificacion) {
-                            mensaje(notificacion.id,'EVENTO schedule');
-                        });
+//                        cordova.plugins.notification.local.on('schedule',function (notificacion) {
+//                            mensaje(notificacion.id,'EVENTO schedule');
+//                        });
+//
+//                        cordova.plugins.notification.local.on('trigger',function (notificacion) {
+//                            mensaje(notificacion.id,'EVENTO trigger');
+//                        });
+//
+//                        cordova.plugins.notification.local.on('cancel',  function (notificacion) {
+//                            mensaje(notificacion,'EVENTO cancel');
+//                        });
+//
+//                        cordova.plugins.notification.local.on('click', function (notificacion) {
+//                            try
+//                            {
+//                                mensaje(notificacion.id+"\n"+ notificacion.data,'EVENTO onclick');
+//                            }
+//                            catch (ex){mensaje(notificacion.id,'EVENTO onclick');}
+//                        });
 
-                        cordova.plugins.notification.local.on('trigger',function (notificacion) {
-                            mensaje(notificacion.id,'EVENTO trigger');
-                        });
-
-                        cordova.plugins.notification.local.on('cancel',  function (notificacion) {
-                            mensaje(notificacion,'EVENTO cancel');
-                        });
-
-                        cordova.plugins.notification.local.on('click', function (notificacion) {
-                            try
-                            {
-                                mensaje(notificacion.id+"\n"+ notificacion.data,'EVENTO onclick');
-                            }
-                            catch (ex){mensaje(notificacion.id,'EVENTO onclick');}
-                        });
-
-                    }, false);
+//                    }, false);
         </script>
 
         <script type="text/javascript" src="cordova.js"></script>
