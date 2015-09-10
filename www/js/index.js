@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var v_hola;
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -48,6 +50,7 @@ function deviceReady() {
         };
 
         window.plugin.notification.local.ontrigger = function (id, state, json) {
+            v_hola=v_hola+"id";
             mensaje(id, 'EVENTO ontrigger');
         };
 
@@ -63,6 +66,8 @@ function deviceReady() {
                 mensaje(id, 'EVENTO onclick');
             }
         }
+
+        alert(v_hola);
     }
     catch (ex){mensaje(ex.message,'ERROR en deviceReady');}
 }
