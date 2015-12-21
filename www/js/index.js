@@ -156,6 +156,7 @@ function metodo_add_simple(p_id) {
             message: 'Vas a funcionar?.',
             date:    _10_seconds_from_now,
             sound:   v_sonido,
+            autoCancel: false,
             json:       JSON.stringify({ test: 222 })
         });
 
