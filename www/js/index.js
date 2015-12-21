@@ -147,6 +147,7 @@ function metodo_add_simple(p_id) {
             title:   'Notificación 2',
             message: 'Vas a funcionar?.',
             date:    _10_seconds_from_now,
+            sound:   'file://endofmsg.wav',
             json:       JSON.stringify({ test: 222 })
         });
 
