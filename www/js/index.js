@@ -142,12 +142,17 @@ function metodo_add_simple(p_id) {
         var now = new Date().getTime();
         var _10_seconds_from_now = new Date(now + 10*1000);
 
+
+            var path = window.location.pathname;
+            path = path.substr( path, path.length - 10 );
+            var v_sonido= 'file://' + path+'beep.caf';
+        alert(v_sonido);
         window.plugin.notification.local.add({
             id:      p_id,
             title:   'Notificación 2',
             message: 'Vas a funcionar?.',
             date:    _10_seconds_from_now,
-            sound:   'file://beep.caf',
+            sound:   v_sonido,
             json:       JSON.stringify({ test: 222 })
         });
 
