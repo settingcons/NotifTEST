@@ -51,7 +51,12 @@ function deviceReady() {
 
         window.plugin.notification.local.ontrigger = function (id, state, json) {
             v_hola=v_hola+"id";
-            mensaje(id, 'EVENTO ontrigger');
+            var path = window.location.pathname;
+            path = path.substr( path, path.length - 10 );
+            var v_sonido= 'file://' + path+'beep.caf';
+            var v_sonido = new Media(v_fichero,onSuccessAudioPlay,onErrorAudioPlay);
+            _mediaAudio.play();
+            //mensaje(id, 'EVENTO ontrigger');
         };
 
         window.plugin.notification.local.oncancel = function (id, state, json) {
@@ -143,10 +148,8 @@ function metodo_add_simple(p_id) {
         var _10_seconds_from_now = new Date(now + 10*1000);
 
 
-            var path = window.location.pathname;
-            path = path.substr( path, path.length - 10 );
-            var v_sonido= 'file://' + path+'beep.caf';
-        alert(v_sonido);
+        v_sonido='www/sounds/endofmsg.wav';
+        //alert(v_sonido);
         window.plugin.notification.local.add({
             id:      p_id,
             title:   'Notificación 2',
